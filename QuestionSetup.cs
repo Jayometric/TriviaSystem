@@ -79,7 +79,7 @@ public class QuestionSetup : MonoBehaviour
             // Create a temporary boolean to pass to the buttons
             bool isCorrect = false;
 
-            // If ti is the correct answer, set the bool to true
+            // If it is the correct answer, set the bool to true
             if(i == correctAnswerChoice)
             {
                 isCorrect = true;
