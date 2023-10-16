@@ -11,12 +11,13 @@ using System.IO;
 public class CVStoSO
 {
     private static string questionsCSVPath = "/Editor/CSVs/Questions.csv";
+    private static string questionsPath = "Assets/Resources/Questions/";
     private static int numberOfAnswers = 4;
 
     [MenuItem("Utilities/Generate Questions")]
     public static void GeneratePhrases()
     {
-        Debug.Log("Generated Questions");
+
         string[] allLines = File.ReadAllLines(Application.dataPath + questionsCSVPath);
 
         foreach (string s in allLines)
@@ -32,6 +33,13 @@ public class CVStoSO
 
             // Initialize the array of answers
             questionData.answers = new string[4];
+
+            // Check if the folder for generating questions does not exist
+            if (!Directory.Exists(questionsPath))
+            {
+                // Create the directory as one does not exist (creates a folder)
+                Directory.CreateDirectory(questionsPath);
+            }
 
             for (int i = 0; i < numberOfAnswers; i++)
             {
@@ -49,10 +57,12 @@ public class CVStoSO
             {
                 questionData.name = questionData.question;
             }
-            // Save this in the RESOURCES folder to load them later by script
-            AssetDatabase.CreateAsset(questionData, $"Assets/Resources/Questions/{questionData.name}.asset");
+            // Save this in the questionsPathfolder to load them later by script
+            AssetDatabase.CreateAsset(questionData, $"{questionsPath}/{questionData.name}.asset");
         }
 
         AssetDatabase.SaveAssets();
+
+        Debug.Log($"Generated Questions");
     }
 }
