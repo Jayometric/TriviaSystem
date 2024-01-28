@@ -8,8 +8,10 @@ using TMPro;
 public class AnswerButton : MonoBehaviour
 {
     private bool isCorrect;
-    [SerializeField]
-    private TextMeshProUGUI answerText;
+    [SerializeField] private TextMeshProUGUI answerText;
+
+    // To make it ask a new question after the first question
+    [SerializeField] private QuestionSetup questionSetup;
 
     public void SetAnswerText(string newText)
     {
@@ -30,6 +32,13 @@ public class AnswerButton : MonoBehaviour
         else
         {
             Debug.Log("WRONG ANSWER");
+        }
+
+        // Get the next question if there are more in the list
+        if (questionSetup.questions.Count > 0)
+        {
+            // Generate a new question
+            questionSetup.Start();
         }
     }
 }
