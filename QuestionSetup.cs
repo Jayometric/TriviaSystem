@@ -28,7 +28,7 @@ public class QuestionSetup : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         //Get a new question
         SelectNewQuestion();
