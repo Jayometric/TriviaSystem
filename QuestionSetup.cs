@@ -8,7 +8,7 @@ using TMPro;
 public class QuestionSetup : MonoBehaviour
 {
     [SerializeField]
-    private List<QuestionData> questions;
+    public List<QuestionData> questions;
     private QuestionData currentQuestion;
 
     [SerializeField]
