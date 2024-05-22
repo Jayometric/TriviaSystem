@@ -56,7 +56,7 @@ public class QuestionSetup : MonoBehaviour
         int randomQuestionIndex = Random.Range(0, questions.Count);
         //Set the question to the randon index
         currentQuestion = questions[randomQuestionIndex];
-        // Remove this questionm from the list so it will not be repeared (until the game is restarted)
+        // Remove this question from the list so it will not be repeared (until the game is restarted)
         questions.RemoveAt(randomQuestionIndex);
     }
 
